@@ -13,12 +13,12 @@
     "lint": "npx eslint src/javascripts/**/*.js  spec/**/*.js",
     "fixlint": "npx eslint src/javascripts/**/*.js  spec/**/*.js --fix"
   },
-  "homepage": "https://yourGithubUserName.github.io/XXXXXXXXXXX/",
+  "homepage": "https://toomec2105.github.io/reaction-time-tester/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourGithubUserName/XXXXXXXXX.git"
+    "url": "git+https://github.com/toomec2105/reaction-time-tester.git"
   },
-  "dependencies": {    
+  "dependencies": {
     "local-storage": "^2.0.0",
     "lodash": "^4.17.19",
     "normalize.css": "^8.0.1",
@@ -30,15 +30,16 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/register": "^7.10.5",
+    "browserslist": "^4.13.0",
+    "caniuse-lite": "^1.0.30001104",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.8.0",
     "gh-pages": "^2.2.0",
     "jasmine": "^3.5.0",
-    "parcel-bundler": "^1.12.4",
-    "eslint": "^6.8.0",
-    "browserslist": "^4.13.0",
-    "caniuse-lite": "^1.0.30001104"
+    "parcel-bundler": "^1.12.4"
   },
-  "browserslist": [   
-   "> 0.25%, not dead"
+  "browserslist": [
+    "> 0.25%, not dead"
   ],
   "author": "toomec2105",
   "license": "ISC"

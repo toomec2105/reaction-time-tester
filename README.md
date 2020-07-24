@@ -14,6 +14,10 @@
 - npm i (installs all dependencies in node_modules)
 - use "scripts" in package.json to test, deploy, build, start app on server (localhost:1234)
 - in spec/ you'll find a simple test for src/javascripts/module/for-jasmine-test-only.js, whch uses lodash library
+
+## Known issues 
+- After making a build enter index.html file in dist folder and remove slahes("/") from the beggining of all links to index.js, style.css and other files
+
 ### Babel
 1. To only include polyfills and code transforms needed for users whose browsers have >0.25% market share (ignoring browsers without security updates like IE 10 and BlackBerry):
 ```
