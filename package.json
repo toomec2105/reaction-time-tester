@@ -1,0 +1,45 @@
+{
+  "name": "model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "init": "npm i && npm run spec",
+    "spec": "node node_modules/jasmine/bin/jasmine init",
+    "test": "npx jasmine",
+    "start": "npx parcel src/index.html",
+    "build": "npx parcel build src/index.html",
+    "deploy": "npx gh-pages -d dist",
+    "lint": "npx eslint src/javascripts/**/*.js  spec/**/*.js",
+    "fixlint": "npx eslint src/javascripts/**/*.js  spec/**/*.js --fix"
+  },
+  "homepage": "https://yourGithubUserName.github.io/XXXXXXXXXXX/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourGithubUserName/XXXXXXXXX.git"
+  },
+  "dependencies": {    
+    "local-storage": "^2.0.0",
+    "lodash": "^4.17.19",
+    "normalize.css": "^8.0.1",
+    "typography.css": "^0.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/register": "^7.10.5",
+    "gh-pages": "^2.2.0",
+    "jasmine": "^3.5.0",
+    "parcel-bundler": "^1.12.4",
+    "eslint": "^6.8.0",
+    "browserslist": "^4.13.0",
+    "caniuse-lite": "^1.0.30001104"
+  },
+  "browserslist": [   
+   "> 0.25%, not dead"
+  ],
+  "author": "toomec2105",
+  "license": "ISC"
+}
