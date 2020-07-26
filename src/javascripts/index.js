@@ -2,22 +2,25 @@ import { okGame } from './learning-reference/gameMessage';
 
 //console.log(okGame("Football")); //js import  test
 
-let circle1 = document.getElementById("circle1");
-let circle2 = document.getElementById("circle2");
+const canvas = document.getElementById("canvas");
+const canvasTop = document.getElementById("canvasTop");
+const canvasBot = document.querySelector("#canvasBot");
 
-
-circle1.addEventListener("click", function fn(e) {
-   circle1.classList.add("hidden");});
-
-circle2.addEventListener("click", function fn(e) {
-   circle2.classList.add("hidden");});
-
-function drawCircle(time, place){
-  setInterval(function(){ 
-    place.classList.add("visible");},time
-    ); 
+function drawShape(size, color, border_radius, canvasId) {
+  canvasId.style.backgroundColor = color;
+  canvasId.style.width = size + "px";
+  canvasId.style.height = size + "px";
+  canvasId.style.borderRadius = border_radius + "%";
+  canvasId.classList.add("shape");
 }
 
-drawCircle(3000,circle1);
-drawCircle(3000,circle2);
+drawShape(200, "red", 50, canvasTop);
+drawShape(300, "lightblue", 0, canvasBot);
+
+const shape = document.querySelector(".shape");
+console.log(shape);
+
+shape.addEventListener("click", function () {
+  shape.classList.add("invisible");
+});
 

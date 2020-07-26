@@ -4,19 +4,15 @@ reset-local is loaded from the styles directory*/
 @import "./reset-local.css";
 @import "typography.css";
 
-.dot {
-    height: 200px;
-    width: 200px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    visibility: hidden;
-  }
-  
-  .visible{
-     visibility: visible;
-  }
-  
-  .hidden{
-     visibility: hidden;
-  }
+.circle {
+   height: 200px;
+   width: 200px;
+   background-color: #bbb;
+   border-radius: 50%;
+   display: inline-block;
+   visibility: hidden;
+ }
+ 
+ .invisible {
+   display: none;
+ }
