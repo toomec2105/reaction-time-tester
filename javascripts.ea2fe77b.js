@@ -128,30 +128,62 @@ exports.okGame = okGame;
 function okGame(gameName) {
   return gameName + ' ok!';
 }
+},{}],"javascripts/utils/get-random-int.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getRandomInt = getRandomInt;
+
+/**
+ * Returns a random number between min (inclusive) and max(exclusive)
+ */
+function getRandomInt(min, max) {
+  var maxExclusive = true;
+  min = Math.ceil(min);
+  max = maxExclusive ? Math.floor(max) - 1 : Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 },{}],"javascripts/index.js":[function(require,module,exports) {
 "use strict";
 
 var _gameMessage = require("./learning-reference/gameMessage");
 
-//console.log(okGame("Football")); //js import  test
-var circle1 = document.getElementById("circle1");
-var circle2 = document.getElementById("circle2");
-circle1.addEventListener("click", function fn(e) {
-  circle1.classList.add("hidden");
-});
-circle2.addEventListener("click", function fn(e) {
-  circle2.classList.add("hidden");
-});
+var _getRandomInt = require("./utils/get-random-int");
 
-function drawCircle(time, place) {
-  setInterval(function () {
-    place.classList.add("visible");
-  }, time);
+//console.log(okGame("Football")); //js import  test
+var canvas = document.getElementById("canvas");
+var canvasTop = document.getElementById("canvasTop");
+var canvasBot = document.querySelector("#canvasBot");
+
+function drawShape(size, color, border_radius, canvasId, x, y) {
+  canvasId.style.backgroundColor = color;
+  canvasId.style.width = size + "px";
+  canvasId.style.height = size + "px";
+  canvasId.style.borderRadius = border_radius + "%";
+  canvasId.classList.add("shape");
+  setCoordinates(x, y, canvasId);
 }
 
-drawCircle(3000, circle1);
-drawCircle(3000, circle2);
-},{"./learning-reference/gameMessage":"javascripts/learning-reference/gameMessage.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+if ((0, _getRandomInt.getRandomInt)(0, 2) == 1) {
+  drawShape(200, "red", 50, canvasTop, (0, _getRandomInt.getRandomInt)(0, 1750), (0, _getRandomInt.getRandomInt)(0, 710));
+} else {
+  drawShape(300, "lightblue", 0, canvasBot, (0, _getRandomInt.getRandomInt)(0, 1610), (0, _getRandomInt.getRandomInt)(0, 600));
+}
+
+var shape = document.querySelector(".shape");
+console.log(shape);
+shape.addEventListener("click", function () {
+  shape.classList.add("invisible");
+});
+
+function setCoordinates(x_pos, y_pos, d) {
+  d.style.position = "absolute";
+  d.style.left = x_pos + 'px';
+  d.style.top = y_pos + 'px';
+}
+},{"./learning-reference/gameMessage":"javascripts/learning-reference/gameMessage.js","./utils/get-random-int":"javascripts/utils/get-random-int.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -179,7 +211,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44567" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42903" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
