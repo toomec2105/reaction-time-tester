@@ -1,5 +1,5 @@
 import { okGame } from './learning-reference/gameMessage';
-
+import { getRandomInt } from './utils/get-random-int'
 //console.log(okGame("Football")); //js import  test
 
 const canvas = document.getElementById("canvas");
@@ -15,8 +15,11 @@ function drawShape(size, color, border_radius, canvasId,x,y) {
   setCoordinates(x,y,canvasId);
 }
 
-drawShape(200, "red", 50, canvasTop,134,500);
-drawShape(300, "lightblue", 0, canvasBot,700,200);
+if(getRandomInt(0,2) == 1){
+  drawShape(200, "red", 50, canvasTop, getRandomInt(0,1750),getRandomInt(0,710));
+}else{
+  drawShape(300, "lightblue", 0, canvasBot, getRandomInt(0,1610),getRandomInt(0,600));
+}
 
 const shape = document.querySelector(".shape");
 console.log(shape);
