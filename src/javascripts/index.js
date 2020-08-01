@@ -1,32 +1,52 @@
 import { okGame } from './learning-reference/gameMessage';
-import { getRandomInt } from './utils/get-random-int'
+import { getRandomInt } from './utils/get-random-int';
+import { drawShape } from './drawHtmlElement/drawShape';
 //console.log(okGame("Football")); //js import  test
 
-const canvas = document.getElementById("canvas");
 const canvasTop = document.getElementById("canvasTop");
-const canvasBot = document.querySelector("#canvasBot");
+const displayer = document.getElementById("display");
+let date = new Date();;
+let reactionTime = 0;
+let numberOfTries = 8; 
+let times = new Array(8);
+let counter = 0;
+let _ = require("lodash");
+let size = 250;
 
-function drawShape(size, color, border_radius, canvasId,x,y) {
-  canvasId.style.backgroundColor = color;
-  canvasId.style.width = size + "px";
-  canvasId.style.height = size + "px";
-  canvasId.style.borderRadius = border_radius + "%";
-  canvasId.classList.add("shape");
-  setCoordinates(x,y,canvasId);
-}
+reactionTime = date.getTime();
+drawShape(size, canvasTop);
 
-if(getRandomInt(0,2) == 1){
-  drawShape(200, "red", 50, canvasTop, getRandomInt(0,1750),getRandomInt(0,710));
-}else{
-  drawShape(300, "lightblue", 0, canvasBot, getRandomInt(0,1610),getRandomInt(0,600));
-}
-
-const shape = document.querySelector(".shape");
-console.log(shape);
-
-shape.addEventListener("click", function () {
-  shape.classList.add("invisible");
+canvasTop.addEventListener("click", function () {
+  if(counter < numberOfTries){
+  date = new Date();
+  times[counter] = date.getTime() - reactionTime; 
+  
+  reactionTime = date.getTime();
+  counter++;
+  if(counter >= numberOfTries ){
+    displayer.innerHTML = "Best: " + _.min(times) + ",  Worst: " + _.max(times) + ",  Avg: " + _.mean(times);
+   
+  }else{
+    drawShape(size, canvasTop);
+  }
+  }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function setCoordinates(x_pos, y_pos, d) {
   d.style.position = "absolute";
