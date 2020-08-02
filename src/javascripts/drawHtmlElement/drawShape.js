@@ -2,8 +2,10 @@ import { getRandomColor } from './getRandomColor';
 import { getRandomCoordinateX, getRandomCoordinateY } from './getRandomCoordinates';
 import { setCoordinates } from './setCoordinates';
 import { getRandomBorderRadius } from './getRandomBorderRadius';
+import { getSize } from './getSize';
 
-export function drawShape(size, canvasId) {
+export function drawShape(canvasId) {
+  let size = getSize();
   let x = 0;
   let y = 0;
   x = getRandomCoordinateX(size);

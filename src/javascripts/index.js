@@ -3,7 +3,6 @@ import { drawShape } from './drawHtmlElement/drawShape';
 const canvasTop = document.getElementById("canvasTop");
 const displayer = document.getElementById("display");
 const _ = require("lodash");
-const size = 250;
 const numberOfTries = 8; 
 let date = new Date();;
 let reactionTime = 0;
@@ -11,7 +10,7 @@ let times = new Array(8);
 let counter = 0;
 
 reactionTime = date.getTime();
-drawShape(size, canvasTop);
+drawShape(canvasTop);
 
 canvasTop.addEventListener("click", function () {
   if(counter < numberOfTries){
@@ -23,7 +22,7 @@ canvasTop.addEventListener("click", function () {
   if(counter >= numberOfTries ){
     displayer.innerHTML = "Best: " + _.min(times) + ",  Worst: " + _.max(times) + ",  Avg: " + _.mean(times);
   }else{
-    drawShape(size, canvasTop);
+    drawShape(canvasTop);
   }
   }
 });
