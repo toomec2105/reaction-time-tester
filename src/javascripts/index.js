@@ -26,19 +26,18 @@ canvas.addEventListener("click", function () {
     results[currentTry] = reactionTimeEnd - reactionTimeStart;
     reactionTimeStart = reactionTimeEnd;
     currentTry++;
+
     scoreDisplayer.innerHTML =
-      "Best: " +
-      _.min(results) +
-      ",  Worst: " +
-      _.max(results) +
-      ",  Avg: " +
-      _.mean(results) +
-      ",  Sum: " +
-      _.sum(results);
+      "Best: " + _.min(results) +
+      ",  Worst: " + _.max(results) +
+      ",  Avg: " + _.mean(results) +
+      ",  Sum: " + _.sum(results);
+
     if (currentTry < SHAPE_DISPLAY_NUMBER) {
       drawShape(canvas);
     } else {
       canvas.classList.add("invisible");
     }
+    
   }
 });
