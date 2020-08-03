@@ -1,29 +1,37 @@
 import { drawShape } from './drawHtmlElement/drawShape';
+import _ from 'lodash';
 
-const canvasTop = document.getElementById("canvasTop");
-const displayer = document.getElementById("display");
-const _ = require("lodash");
-const numberOfTries = 8; 
-let date = new Date();;
+const canvas = document.getElementById("canvas");
+const scoreDisplayer = document.getElementById("display");
+const SHAPE_DISPLAY_NUMBER = 8;
+let date = new Date();
 let reactionTime = 0;
-let times = new Array(8);
-let counter = 0;
+let results = new Array(8); 
+let currentTry = 0;
 
-reactionTime = date.getTime();
-drawShape(canvasTop);
+init();
 
-canvasTop.addEventListener("click", function () {
-  if(counter < numberOfTries){
-  date = new Date();
-  times[counter] = date.getTime() - reactionTime; 
-  
+// ------------------ init 
+function init(){
   reactionTime = date.getTime();
-  counter++;
-  if(counter >= numberOfTries ){
-    displayer.innerHTML = "Best: " + _.min(times) + ",  Worst: " + _.max(times) + ",  Avg: " + _.mean(times);
-  }else{
-    drawShape(canvasTop);
-  }
+  drawShape(canvas);
+}
+
+
+// --------------------
+
+canvas.addEventListener("click", function () {
+  if(currentTry < SHAPE_DISPLAY_NUMBER){
+    date = new Date();
+    results[currentTry] = date.getTime() - reactionTime; 
+    reactionTime = date.getTime();
+    currentTry++;
+    
+    if(currentTry >= SHAPE_DISPLAY_NUMBER ){
+      scoreDisplayer.innerHTML = "Best: " + _.min(results) + ",  Worst: " + _.max(results) + ",  Avg: " + _.mean(results);
+    }else{
+      drawShape(canvas);
+    }
   }
 });
 
