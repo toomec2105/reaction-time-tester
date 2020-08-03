@@ -1,8 +1,5 @@
 import { getRandomColor } from './getRandomColor';
-import {
-  getRandomCoordinateX,
-  getRandomCoordinateY,
-} from './getRandomCoordinates';
+import {  getRandomCoordinateX,  getRandomCoordinateY} from './getRandomCoordinates';
 import { setCoordinates } from './setCoordinates';
 import { getRandomBorderRadius } from './getRandomBorderRadius';
 import { getShapeSize } from './getShapeSize';
