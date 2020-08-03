@@ -5,14 +5,15 @@ const canvas = document.getElementById("canvas");
 const startBtn = document.getElementById("startBtn");
 const scoreDisplayer = document.getElementById("scores");
 const SHAPE_DISPLAY_NUMBER = 8;
-let date = new Date();
 let reactionTimeStart = 0;
+let date;
 let results = new Array(8);
 let currentTry = 0;
 let reactionTimeEnd = 0;
 
 // --------------------
 startBtn.addEventListener("click", function () {
+  date = new Date();
   reactionTimeStart = date.getTime();
   drawShape(canvas);
   startBtn.classList.add("invisible");
@@ -38,6 +39,6 @@ canvas.addEventListener("click", function () {
     } else {
       canvas.classList.add("invisible");
     }
-    
+
   }
 });
