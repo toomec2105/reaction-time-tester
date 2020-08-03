@@ -13,7 +13,5 @@ export function drawShape(canvas) {
   canvas.style.width = size + "px";
   canvas.style.height = size + "px";
   canvas.style.borderRadius = getRandomBorderRadius() + "%";
-  canvas.classList.add("shape");
   setCoordinates(xCoord, yCoord, canvas);
 }
-

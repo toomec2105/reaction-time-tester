@@ -2,57 +2,33 @@ import { drawShape } from './drawHtmlElement/drawShape';
 import _ from 'lodash';
 
 const canvas = document.getElementById("canvas");
-const scoreDisplayer = document.getElementById("display");
+const startBtn = document.getElementById("startBtn");
+const scoreDisplayer = document.getElementById("scores");
 const SHAPE_DISPLAY_NUMBER = 8;
 let date = new Date();
-let reactionTime = 0;
+let reactionTimeStart = 0;
 let results = new Array(8); 
 let currentTry = 0;
-
-init();
-
-// ------------------ init 
-function init(){
-  reactionTime = date.getTime();
-  drawShape(canvas);
-}
-
+let reactionTimeEnd = 0;
 
 // --------------------
+startBtn.addEventListener("click", function () {
+  reactionTimeStart = date.getTime();
+  drawShape(canvas);
+  startBtn.classList.add(invisible);
+});
 
+//--------------------
 canvas.addEventListener("click", function () {
   if(currentTry < SHAPE_DISPLAY_NUMBER){
     date = new Date();
-    results[currentTry] = date.getTime() - reactionTime; 
-    reactionTime = date.getTime();
+    reactionTimeEnd = date.getTime();
+    results[currentTry] = reactionTimeEnd - reactionTimeStart; 
+    reactionTimeStart = reactionTimeEnd;
     currentTry++;
-    
-    if(currentTry >= SHAPE_DISPLAY_NUMBER ){
-      scoreDisplayer.innerHTML = "Best: " + _.min(results) + ",  Worst: " + _.max(results) + ",  Avg: " + _.mean(results);
-    }else{
+    scoreDisplayer.innerHTML = "Best: " + _.min(results) + ",  Worst: " + _.max(results) + ",  Avg: " + _.mean(results)+ ",  Sum: " + _.sum(results);
+    if(currentTry < SHAPE_DISPLAY_NUMBER ){
       drawShape(canvas);
     }
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function setCoordinates(x_pos, y_pos, d) {
-  d.style.position = "absolute";
-  d.style.left = x_pos+'px';
-  d.style.top = y_pos+'px';
-}
