@@ -15,7 +15,7 @@ let reactionTimeEnd = 0;
 startBtn.addEventListener("click", function () {
   reactionTimeStart = date.getTime();
   drawShape(canvas);
-  startBtn.classList.add(invisible);
+  startBtn.classList.add("invisible");
 });
 
 //--------------------
@@ -29,6 +29,8 @@ canvas.addEventListener("click", function () {
     scoreDisplayer.innerHTML = "Best: " + _.min(results) + ",  Worst: " + _.max(results) + ",  Avg: " + _.mean(results)+ ",  Sum: " + _.sum(results);
     if(currentTry < SHAPE_DISPLAY_NUMBER ){
       drawShape(canvas);
+    }else{
+      canvas.classList.add("invisible");
     }
   }
 });
