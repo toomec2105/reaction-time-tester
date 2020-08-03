@@ -16,10 +16,10 @@ module.exports = {
   addTwoNumbersWithLodash,
 };
 // const helper = require ("....");
-// helper.addTwoNumbersWithLodash(2,3); 
+// helper.addTwoNumbersWithLodash(2,3);
 
-// but if like this 
+// but if like this
 // module.exports = addTwoNumbersWithLodash;
 // then you can require it like this:
 //const addTwoNumbersWithLodash = require ("......");
-// addTwoNumbersWithLodash(2,3); 
+// addTwoNumbersWithLodash(2,3);

@@ -4,14 +4,13 @@ reset-local is loaded from the styles directory*/
 @import "./reset-local.css";
 @import "typography.css";
 
+#startBtn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 30px;
+}
 
- #startBtn {
-   display: block;
-   margin: 0 auto;
-   margin-top: 20px;
-   font-size: 30px;
- }
-
- .invisible {
+.invisible {
   visibility: hidden;
 }

@@ -11,7 +11,9 @@
     "build": "npx parcel build src/index.html",
     "deploy": "npx gh-pages -d dist",
     "lint": "npx eslint src/javascripts/**/*.js  spec/**/*.js",
-    "fixlint": "npx eslint src/javascripts/**/*.js  spec/**/*.js --fix"
+    "fixlint": "npx eslint src/javascripts/**/*.js  spec/**/*.js --fix",
+    "prettier": "npx prettier --write src/styles src/index.html",
+    "format": "npm run fixlint && npm run prettier"
   },
   "homepage": "https://toomec2105.github.io/reaction-time-tester/",
   "repository": {
