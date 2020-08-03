@@ -5,10 +5,10 @@ import {
 } from './getRandomCoordinates';
 import { setCoordinates } from './setCoordinates';
 import { getRandomBorderRadius } from './getRandomBorderRadius';
-import { getSize } from './getSize'; //shape size
+import { getShapeSize } from './getShapeSize';
 
 export function drawShape(canvas) {
-  let size = getSize();
+  let size = getShapeSize();
   let xCoord = getRandomCoordinateX(size);
   let yCoord = getRandomCoordinateY(size);
 
