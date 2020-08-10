@@ -4,7 +4,6 @@ import { roundPrecised } from "./roundPrecised";
 import { Player } from "../module-game/player-module-v2";
 import { Game } from "../module-game/game-module-v2";
 import { Persistence } from "../module-persistence/persistence";
-import { toggleActivePlayer as changeActivePlayerColor } from "../module-game/toggle-active-player";
 
 const canvas = document.getElementById("canvas");
 const startBtn = document.getElementById("startBtn");
@@ -18,6 +17,7 @@ let date;
 let reactionTimes = [];
 let currentTry = 0;
 let reactionTimeEnd = 0;
+let game = new Game("Reaction time game", SHAPE_DISPLAY_NUMBER);
 
 // --------------------
 startBtn.addEventListener("click", function () {
@@ -53,9 +53,12 @@ canvas.addEventListener("click", function () {
 });
 
 function saveScores (){
-  persistence.put(username.value, 
-      "Best: " + _.min(reactionTimes) +
-      ",  Worst: " + _.max(reactionTimes) +
-      ",  Avg: " +  roundPrecised(_.mean(reactionTimes),2) +
-      ",  Sum: " + _.sum(reactionTimes));
+  if(persistence.get(username)!= null && persistence.get(username)[0] < _.min(reactionTimes)){
+    persistence.put(username.value, [
+      _.min(reactionTimes),
+      _.max(reactionTimes),
+      roundPrecised(_.mean(reactionTimes),2),
+      _.sum(reactionTimes)]);
+  }
+ 
 }
