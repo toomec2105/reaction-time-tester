@@ -9,7 +9,7 @@ import { toggleActivePlayer as changeActivePlayerColor } from "../module-game/to
 const canvas = document.getElementById("canvas");
 const startBtn = document.getElementById("startBtn");
 const scoreDisplayer = document.getElementById("scores");
-
+var username = document.getElementById("name");
 
 const persistence = new Persistence();
 const SHAPE_DISPLAY_NUMBER = 8;
@@ -45,8 +45,17 @@ canvas.addEventListener("click", function () {
     if (currentTry < SHAPE_DISPLAY_NUMBER) {
       drawShape(canvas);
     } else {
+      saveScores();
       canvas.classList.add("invisible");
     }
 
   }
 });
+
+function saveScores (){
+  persistence.put(username.value, 
+      "Best: " + _.min(reactionTimes) +
+      ",  Worst: " + _.max(reactionTimes) +
+      ",  Avg: " +  roundPrecised(_.mean(reactionTimes),2) +
+      ",  Sum: " + _.sum(reactionTimes));
+}
