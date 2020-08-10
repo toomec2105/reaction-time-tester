@@ -1,5 +1,6 @@
 export function Player(playerId){
     // 1
+    let name = "";
     const id = playerId;
     let score = 0;
 
@@ -19,6 +20,10 @@ export function Player(playerId){
         score = Number(playerScore);
     }
 
+    this.setName = (playerName) => {
+     
+        this.name = playerName;
+    }
     this.toString = () => {
         return "id: " + id + ", score: " + score;
     };
