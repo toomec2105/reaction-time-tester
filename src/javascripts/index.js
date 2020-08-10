@@ -1,10 +1,17 @@
 import { drawShape } from "./drawHtmlElement/drawShape";
 import _ from "lodash";
 import { roundPrecised } from "./roundPrecised";
+import { Player } from "../module-game/player-module-v2";
+import { Game } from "../module-game/game-module-v2";
+import { Persistence } from "../module-persistence/persistence";
+import { toggleActivePlayer as changeActivePlayerColor } from "../module-game/toggle-active-player";
 
 const canvas = document.getElementById("canvas");
 const startBtn = document.getElementById("startBtn");
 const scoreDisplayer = document.getElementById("scores");
+
+
+const persistence = new Persistence();
 const SHAPE_DISPLAY_NUMBER = 8;
 let reactionTimeStart = 0;
 let date;
