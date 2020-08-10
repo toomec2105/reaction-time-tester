@@ -12,7 +12,15 @@
       <p id="scores">
         Best: 0, Worst: 0, Avg: 0, Sum: 0
       </p>
-      <button type="button" id="startBtn">Start</button>
+      <form action="/action_page.php">
+        <div id="username">
+        <label for="fname">Username:</label> 
+        <input type="text" name="fname" value="">
+        </div>
+        <br>
+        <input type="button" id="startBtn" value="Start">
+      </form> 
+      
     </div>
     <div id="canvas"></div>
     <script src="javascripts/index.js"></script>
