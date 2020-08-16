@@ -15,7 +15,7 @@ let persistence = new Persistence();
 const SHAPE_DISPLAY_NUMBER = 8;
 let reactionTimeStart = 0;
 let date;
-let player = new Player(0);
+
 
 let reactionTimes = [];
 let currentTry = 0;
@@ -25,13 +25,7 @@ let game = new Game("Reaction time game", SHAPE_DISPLAY_NUMBER);
 // --------------------
 startBtn.addEventListener("click", function () {
   if(persistence.get(username.value) == null){
-    player = new Player(localStorage.length + 1);
-    game.setCurrentPlayer(player);
-    player.setName(username.value);
-    persistence.put(player.name, 99999);
-  }else{
-    player = persistence.get(username.value);
-    game.setCurrentPlayer(player);
+    persistence.put(username.value, 99999);
   }
   date = new Date();
   reactionTimeStart = date.getTime();
@@ -68,11 +62,7 @@ canvas.addEventListener("click", function () {
 });
 
 function saveScores (){
-      game.setCurrentPlayer(player);
       if( _.min(reactionTimes) < persistence.get(username.value)){
         persistence.put(username.value, _.min(reactionTimes));
       }
-      
-    
-  
 }
