@@ -8,12 +8,15 @@ import { Persistence } from "../module-persistence/persistence";
 const canvas = document.getElementById("canvas");
 const startBtn = document.getElementById("startBtn");
 const scoreDisplayer = document.getElementById("scores");
-var username = document.getElementById("name");
+const nameForm = document.getElementById("username");
+let username = document.getElementById("name");
 
-const persistence = new Persistence();
+let persistence = new Persistence();
 const SHAPE_DISPLAY_NUMBER = 8;
 let reactionTimeStart = 0;
 let date;
+let player = new Player(0);
+
 let reactionTimes = [];
 let currentTry = 0;
 let reactionTimeEnd = 0;
@@ -21,10 +24,20 @@ let game = new Game("Reaction time game", SHAPE_DISPLAY_NUMBER);
 
 // --------------------
 startBtn.addEventListener("click", function () {
+  if(persistence.get(username.value) == null){
+    player = new Player(localStorage.length + 1);
+    game.setCurrentPlayer(player);
+    player.setName(username.value);
+    persistence.put(player.name, 99999);
+  }else{
+    player = persistence.get(username.value);
+    game.setCurrentPlayer(player);
+  }
   date = new Date();
   reactionTimeStart = date.getTime();
   drawShape(canvas);
   startBtn.classList.add("invisible");
+  nameForm.classList.add("invisible");
 });
 
 //--------------------
@@ -37,7 +50,9 @@ canvas.addEventListener("click", function () {
     currentTry++;
 
     scoreDisplayer.innerHTML =
-      "Best: " + _.min(reactionTimes) +
+      "Username: " + username.value + 
+      ",  This session Best: " + _.min(reactionTimes) +
+      ",  Player Best: " + persistence.get(username.value) +
       ",  Worst: " + _.max(reactionTimes) +
       ",  Avg: " +  roundPrecised(_.mean(reactionTimes),2) +
       ",  Sum: " + _.sum(reactionTimes);
@@ -53,12 +68,11 @@ canvas.addEventListener("click", function () {
 });
 
 function saveScores (){
-  if(persistence.get(username)!= null && persistence.get(username)[0] < _.min(reactionTimes)){
-    persistence.put(username.value, [
-      _.min(reactionTimes),
-      _.max(reactionTimes),
-      roundPrecised(_.mean(reactionTimes),2),
-      _.sum(reactionTimes)]);
-  }
- 
+      game.setCurrentPlayer(player);
+      if( _.min(reactionTimes) < persistence.get(username.value)){
+        persistence.put(username.value, _.min(reactionTimes));
+      }
+      
+    
+  
 }

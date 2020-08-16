@@ -24,6 +24,10 @@ export function Player(playerId){
      
         this.name = playerName;
     }
+    this.getName = () => {
+        return name;
+    }
+
     this.toString = () => {
         return "id: " + id + ", score: " + score;
     };
