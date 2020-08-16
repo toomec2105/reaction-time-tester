@@ -16,7 +16,6 @@ const SHAPE_DISPLAY_NUMBER = 8;
 let reactionTimeStart = 0;
 let date;
 
-
 let reactionTimes = [];
 let currentTry = 0;
 let reactionTimeEnd = 0;
@@ -25,7 +24,7 @@ let game = new Game("Reaction time game", SHAPE_DISPLAY_NUMBER);
 // --------------------
 startBtn.addEventListener("click", function () {
   if(persistence.get(username.value) == null){
-    persistence.put(username.value, 99999);
+    persistence.put(username.value, 0);
   }
   date = new Date();
   reactionTimeStart = date.getTime();
@@ -42,7 +41,7 @@ canvas.addEventListener("click", function () {
     reactionTimes[currentTry] = reactionTimeEnd - reactionTimeStart;
     reactionTimeStart = reactionTimeEnd;
     currentTry++;
-
+    saveScores();
     scoreDisplayer.innerHTML =
       "Username: " + username.value + 
       ",  This session Best: " + _.min(reactionTimes) +
@@ -57,12 +56,11 @@ canvas.addEventListener("click", function () {
       saveScores();
       canvas.classList.add("invisible");
     }
-
   }
 });
 
 function saveScores (){
-      if( _.min(reactionTimes) < persistence.get(username.value)){
+      if( _.min(reactionTimes) < persistence.get(username.value) || persistence.get(username.value) == 0){
         persistence.put(username.value, _.min(reactionTimes));
       }
 }
