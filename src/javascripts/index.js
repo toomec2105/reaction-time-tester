@@ -1,7 +1,6 @@
 import { drawShape } from "./drawHtmlElement/drawShape";
 import _ from "lodash";
 import { roundPrecised } from "./roundPrecised";
-import { Player } from "../module-game/player-module-v2";
 import { Game } from "../module-game/game-module-v2";
 import { Persistence } from "../module-persistence/persistence";
 
