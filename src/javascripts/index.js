@@ -43,17 +43,16 @@ canvas.addEventListener("click", function () {
     saveScores();
     scoreDisplayer.innerHTML =
       "Username: " + username.value + 
-      ",  This session Best: " + _.min(reactionTimes) +
-      ",  Player Best: " + persistence.get(username.value) +
-      ",  Worst: " + _.max(reactionTimes) +
-      ",  Avg: " +  roundPrecised(_.mean(reactionTimes),2) +
-      ",  Sum: " + _.sum(reactionTimes);
+      "| This session Best: " + _.min(reactionTimes) +
+      "| Player Best: " + persistence.get(username.value) +
+      "| Sum: " + _.sum(reactionTimes);
 
     if (currentTry < SHAPE_DISPLAY_NUMBER) {
       drawShape(canvas);
     } else {
       saveScores();
       canvas.classList.add("invisible");
+      showScores();
     }
   }
 });
@@ -62,4 +61,8 @@ function saveScores (){
       if( _.min(reactionTimes) < persistence.get(username.value) || persistence.get(username.value) == 0){
         persistence.put(username.value, _.min(reactionTimes));
       }
+}
+
+function showScores (){
+
 }
