@@ -84,8 +84,9 @@ function getPlayers() {
 
 function showScores(players) {
   let scores = [];
-  for (let i = 0; i < players.length - 1; i++) {
+  players.sort();
 
+  for (let i = 0; i < players.length - 1; i++) {
     scores.push(localStorage.getItem(players[i]));
     scoreTable.innerHTML += players[i] + ": " + scores[i] + "<br>";
   }

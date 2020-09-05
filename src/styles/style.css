@@ -28,5 +28,7 @@ reset-local is loaded from the styles directory*/
 }
 
 #scoreTable {
-  
+  display: block;
+  text-align: center;
+  font-size: 30px;
 }
