@@ -32,7 +32,6 @@ startBtn.addEventListener("click", function () {
   startBtn.classList.add("invisible");
   nameForm.classList.add("invisible");
 });
-
 //--------------------
 canvas.addEventListener("click", function () {
   if (currentTry < SHAPE_DISPLAY_NUMBER) {
